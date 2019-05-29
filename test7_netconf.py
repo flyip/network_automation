@@ -1,9 +1,9 @@
 
 #!/usr/bin/env python
 import logging
+import sys
 
 from ncclient import manager
-from ncclient.xml_ import *
 f = open('result.xml', 'w')
 
 def connect(host, port, user, password):
@@ -31,4 +31,4 @@ if __name__ == '__main__':
     LOG_FORMAT = '%(asctime)s %(levelname)s %(filename)s:%(lineno)d %(message)s'
     logging.basicConfig(stream=sys.stdout, level=logging.INFO, format=LOG_FORMAT)
 
-connect('vmx', 830, 'admin', 'Huawei@123')
+connect('spine02', 830, 'admin', 'Huawei@123')
