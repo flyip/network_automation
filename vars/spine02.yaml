@@ -6,12 +6,15 @@
       IP: 10.0.0.4/31
       Layer: L3
       State: no shut
+      Description: To_Leaf01_Eth1/2
     ge-0/0/1:
       IP: 10.0.0.6/31
       Layer: L3
       State: no shut
+      Description: To_Leaf02_ge0/0/1
     lo0:
       IP: 192.168.0.2/32
+      Description: Loopback
   protocols:
     bgp:
       RID: 192.168.0.2
