@@ -17,7 +17,7 @@ for key in data['device'].keys():
     hostname = data['device'][key]['hostname']
     ip = data['device'][key]['ip']
     platform = data['device'][key]['platform']
-    if platform == 'vmx':
+    if platform == 'junos':
         conn = manager.connect(
             host = ip,
             port = 830,
