@@ -1,5 +1,5 @@
 ---
-  hostname: leaf01
+  hostname: leaf02
   domain_name: flyip.org
   interfaces:
     ge-0/0/0:
