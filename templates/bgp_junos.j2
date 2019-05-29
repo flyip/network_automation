@@ -1,0 +1,17 @@
+set routing-options router-id {{data['interfaces']['lo0']['IP'].split('/')[0]}}
+set policy-options policy-statement {{data['protocols']['bgp']['policy']['export']}} from protocol direct
+{%- for network in data['protocols']['bgp']['advertise_subnets']%}
+set policy-options policy-statement {{data['protocols']['bgp']['policy']['export']}} from route-filter {{network}} exact
+{%- endfor %}
+set policy-options policy-statement {{data['protocols']['bgp']['policy']['export']}} then accept
+set protocols bgp export {{data['protocols']['bgp']['policy']['export']}}
+set protocols bgp local-as {{data['protocols']['bgp']['local_as']}}
+{%- for group in data['protocols']['bgp']['groups'].keys() %}
+set protocols bgp group {{group}} type {{data['protocols']['bgp']['groups'][group]['type']}}
+set protocols bgp group {{group}} family inet unicast
+{%- for peer in data['protocols']['bgp']['groups'][group].keys() %}
+    {% if 'type' not in peer %}
+set protocols bgp group {{group}} neighbor {{peer}} peer-as {{data['protocols']['bgp']['groups'][group][peer]}}
+    {% endif %}
+{% endfor %}
+{% endfor %}

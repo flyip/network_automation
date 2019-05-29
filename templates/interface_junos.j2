@@ -1,0 +1,8 @@
+set system host-name {{data['hostname']}}
+set system domain-name flyip.org
+{% for interface in data['interfaces'].keys() -%}
+set interfaces {{interface}} unit 0 family inet address {{data['interfaces'][interface]['IP']}}
+set interfaces {{interface}} description {{data['interfaces'][interface]['Description']}}
+{% endfor %}
+set protocols lldp interface all
+set protocols lldp port-id-subtype interface-name

@@ -1,0 +1,18 @@
+hostname {{data['hostname']}}
+ip domain-name flyip.org
+feature lldp
+{% for interface in data['interfaces'].keys() -%}
+{% if 'lo' not in interface -%}
+interface {{interface}}
+  description {{data['interfaces'][interface]['Description']}}
+  {% if data['interfaces'][interface]['Layer'] %}no switchport{% endif %}
+  ip address {{data['interfaces'][interface]['IP']}}
+  {{data['interfaces'][interface]['State']}}
+  exit
+{% endif -%}
+{% if 'lo' in interface -%}
+interface {{interface}}
+  ip address {{data['interfaces'][interface]['IP']}}
+  exit
+{% endif -%}
+{% endfor %}
