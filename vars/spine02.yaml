@@ -1,0 +1,30 @@
+---
+  hostname: spine02
+  domain_name: flyip.org
+  interfaces:
+    ge-0/0/0:
+      IP: 10.0.0.4/31
+      Layer: L3
+      State: no shut
+    ge-0/0/1:
+      IP: 10.0.0.6/31
+      Layer: L3
+      State: no shut
+    lo0:
+      IP: 192.168.0.2/32
+  protocols:
+    bgp:
+      RID: 192.168.0.2
+      local_as: 2
+      address_family: ipv4 unicast
+      advertise_subnets: 
+        - 192.168.0.2/32
+      groups:
+        leaf:
+          type: external
+          10.0.0.5: 3
+          10.0.0.7: 4
+      policy:
+        export: send
+        import: recv
+          
