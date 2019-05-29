@@ -2,9 +2,9 @@
 #!/usr/bin/env python
 import logging
 import time
-
+import sys
 from ncclient import manager
-from ncclient.xml_ import *
+from ncclient.xml_ import new_ele,sub_ele,to_xml
 
 
 def connect(host, port, user, password, source):
@@ -22,11 +22,9 @@ def connect(host, port, user, password, source):
 
     # build configuration element
     config = new_ele('system')
-    sub_ele(config, 'host-name').text = 'foo'
-    sub_ele(config, 'domain-name').text = 'bar'
-    print('*' * 10)
-    print(config)
-    print('*' * 10)
+    sub_ele(config, 'host-name').text = 'spine02'
+    sub_ele(config, 'domain-name').text = 'flyip.org'
+    #print(to_xml(config))
 
     load_config_result = conn.load_configuration(config=config)
     logging.info(load_config_result)
@@ -56,4 +54,4 @@ if __name__ == '__main__':
     LOG_FORMAT = '%(asctime)s %(levelname)s %(filename)s:%(lineno)d %(message)s'
     logging.basicConfig(stream=sys.stdout, level=logging.INFO, format=LOG_FORMAT)
 
-connect('vmx', 830, 'admin', 'Huawei@123', 'candidate')
+    connect('spine02', 830, 'admin', 'Huawei@123', 'candidate')
