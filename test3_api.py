@@ -4,6 +4,11 @@ import os
 from ncclient import manager
 import requests
 import json
+import logging
+import sys
+import logging
+import contextlib
+from http.client import HTTPConnection
 
 user = 'admin'
 pw = 'Huawei@123'
@@ -21,7 +26,36 @@ payload=[
     },
     "id": 1
   }
-]  
+] 
+
+#Debug request
+def debug_requests_on():
+    '''Switches on logging of the requests module.'''
+    HTTPConnection.debuglevel = 1
+
+    logging.basicConfig()
+    logging.getLogger().setLevel(logging.DEBUG)
+    requests_log = logging.getLogger("requests.packages.urllib3")
+    requests_log.setLevel(logging.DEBUG)
+    requests_log.propagate = True
+
+def debug_requests_off():
+    '''Switches off logging of the requests module, might be some side-effects'''
+    HTTPConnection.debuglevel = 0
+
+    root_logger = logging.getLogger()
+    root_logger.setLevel(logging.WARNING)
+    root_logger.handlers = []
+    requests_log = logging.getLogger("requests.packages.urllib3")
+    requests_log.setLevel(logging.WARNING)
+    requests_log.propagate = False
+
+@contextlib.contextmanager
+def debug_requests():
+    '''Use with 'with'!'''
+    debug_requests_on()
+    yield
+    debug_requests_off()
 
 #create logs directory
 print('Check logs directory!')
@@ -37,11 +71,15 @@ for key in data['device'].keys():
 
     hostname = data['device'][key]['hostname']
     ip = data['device'][key]['ip']
-    url= 'http://' + ip +'/ins'
+    url= 'https://' + ip +'/ins'
+    platform = data['device'][key]['platform']
 
-    print('Starting ' + hostname)
-    response = requests.post(url,data=json.dumps(payload), headers=myheaders,auth=(user,pw)).json()
-    print(response['result'])
+    if hostname == 'spine01':
+      debug_requests_on()
+      print('Starting ' + hostname)
+      response = requests.post(url,data=json.dumps(payload), headers=myheaders,auth=(user,pw), verify=False).json()
+      #response = requests.post(url,data=json.dumps(payload), headers=myheaders,auth=(user,pw)).json()
+      print(response['result'])
 
  
 
