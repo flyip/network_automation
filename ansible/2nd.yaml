@@ -1,0 +1,50 @@
+---
+- name: NXOS ansible testing.
+  hosts: spine01
+  gather_facts: False
+  vars_files:
+    - ../vars/{{inventory_hostname}}.yaml
+
+  tasks:
+    - name: display variables
+      debug: 
+        msg: "{{ item.value['IP'] }}"
+      loop: "{{ interfaces|dict2items }}"
+
+    - name: Get facts.
+      nxos_facts:
+        gather_subset: all
+
+    - name: Config IP address(Not loopback)
+      nxos_config:
+        lines:
+          - no shut
+#          - ip address {{item.value['IP']}}
+        parents: interface {{ item.key }}
+      loop: "{{ interfaces|dict2items }}"
+      when: item.key != 'lo0'
+
+    - name: Config IP address(Loopback)
+      nxos_config:
+        lines:
+          - no shut
+#          - ip address {{item.value['IP']}}
+        parents: interface {{ item.key }}
+      loop: "{{ interfaces|dict2items }}"
+      when: item.key in ['lo0', 'lo']
+
+    - name: Check IP address of Loopback
+      nxos_command:
+        commands:
+          - show interface lo0 | json
+      register: result
+      changed_when:
+        - 'ansible_net_interfaces.loopback0.ipv4.address == result.stdout[0].TABLE_interface.ROW_interface.eth_ip_addr'
+      notify: 
+        - restart_BGP
+
+  handlers:
+    - name: restart_BGP
+      nxos_command:
+        commands:
+          - clear bgp all *
