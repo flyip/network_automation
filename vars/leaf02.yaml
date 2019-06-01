@@ -26,7 +26,7 @@
         spine:
           type: external
           10.0.0.2: 1
-          10.0.0.6: 2
+          10.0.0.6: 1
       policy:
         export: send
         import: recv
