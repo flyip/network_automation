@@ -18,9 +18,9 @@
   protocols:
     bgp:
       RID: 192.168.0.2
-      local_as: 1
+      local_as: 2
       address_family: ipv4 unicast
-      advertise_subnets: 
+      advertise_subnets:
         - 192.168.0.2/32
       groups:
         leaf:
@@ -30,4 +30,3 @@
       policy:
         export: send
         import: recv
-          

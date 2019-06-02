@@ -7,7 +7,7 @@
 
   tasks:
     - name: display variables
-      debug: 
+      debug:
         msg: "{{ item.value['IP'] }}"
       loop: "{{ interfaces|dict2items }}"
 
@@ -40,7 +40,7 @@
       register: result
       changed_when:
         - 'ansible_net_interfaces.loopback0.ipv4.address == result.stdout[0].TABLE_interface.ROW_interface.eth_ip_addr'
-#      notify: 
+#      notify:
 #        - restart_BGP
 
   handlers:

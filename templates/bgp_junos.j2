@@ -1,17 +1,26 @@
+{#Generate bgp export policy#}
 set routing-options router-id {{data['interfaces']['lo0']['IP'].split('/')[0]}}
 set policy-options policy-statement {{data['protocols']['bgp']['policy']['export']}} from protocol direct
 {%- for network in data['protocols']['bgp']['advertise_subnets']%}
 set policy-options policy-statement {{data['protocols']['bgp']['policy']['export']}} from route-filter {{network}} exact
 {%- endfor %}
 set policy-options policy-statement {{data['protocols']['bgp']['policy']['export']}} then accept
+{#Generate bgp configuration#}
 set protocols bgp export {{data['protocols']['bgp']['policy']['export']}}
 set protocols bgp local-as {{data['protocols']['bgp']['local_as']}}
 {%- for group in data['protocols']['bgp']['groups'].keys() %}
 set protocols bgp group {{group}} type {{data['protocols']['bgp']['groups'][group]['type']}}
 set protocols bgp group {{group}} family inet unicast
+set protocols bgp group {{group}} multipath multiple-as
 {%- for peer in data['protocols']['bgp']['groups'][group].keys() %}
     {% if 'type' not in peer %}
 set protocols bgp group {{group}} neighbor {{peer}} peer-as {{data['protocols']['bgp']['groups'][group][peer]}}
     {% endif %}
 {% endfor %}
 {% endfor %}
+{#Generate load_balance policy#}
+{%- for network in data['protocols']['bgp']['advertise_subnets']%}
+set policy-options policy-statement loadbal from route-filter {{network}} orlonger
+{%- endfor %}
+set policy-options policy-statement loadbal then load-balance per-packet
+set routing-options forwarding-table export loadbal

@@ -4,52 +4,53 @@
   gather_facts: False
 
   tasks:
-#    - name: Backup configurations(Junos)
-#      junos_config: 
-#        backup: Yes
-#        backup_options:
-#          filename: "{{inventory_hostname}}.cfg"
-#          dir_path: ../logs/
-#      when: ansible_network_os == 'junos'
-#
-#    - name: Backup configurations(NXOS)
-#      nxos_config:
-#        backup: Yes
-#        backup_options:
-#          filename: "{{inventory_hostname}}.cfg"
-#          dir_path: ../logs/
-#      when: ansible_network_os == 'nxos'
-#
-#    - name: Run command on NXOS NE.
-#      nxos_command:
-#        commands: 
-#          - show ip int br 
-#          - show ip bgp summary 
-##        wait_for: result[0] contains Cisco
-#      when: ansible_network_os == 'nxos'
-#      register: output
-#
-#    - name: debug
-#      debug:
-#        var: output['stdout_lines'][1]
-#
-#    - name: Run command on Junos NE.
-#      connection: network_cli
-#      junos_command:
-#        commands: show version 
-#        wait_for: result[0] contains junos
-#        wait_for: result[0] contains JUNOS
-#      when: ansible_network_os == 'junos'
-#      register: output
-#
-#    - name: debug
-#      debug:
-#        var: output
+    - name: Backup configurations(Junos)
+      junos_config:
+        backup: Yes
+        backup_options:
+          filename: "{{inventory_hostname}}.cfg"
+          dir_path: ../logs/
+      when: ansible_network_os == 'junos'
+
+    - name: Backup configurations(NXOS)
+      nxos_config:
+        backup: Yes
+        backup_options:
+          filename: "{{inventory_hostname}}.cfg"
+          dir_path: ../logs/
+      when: ansible_network_os == 'nxos'
+
+    - name: Run command on NXOS NE.
+      nxos_command:
+        commands:
+          - show ip int br
+          - show ip bgp summary
+#        wait_for: result[0] contains Cisco
+      when: ansible_network_os == 'nxos'
+      register: output
+
+    - name: debug
+      debug:
+        var: output['stdout_lines'][1]
+
+    - name: Run command on Junos NE.
+      connection: network_cli
+      junos_command:
+        commands: show version
+        wait_for:
+        - result[0] contains junos
+        - result[0] contains JUNOS
+      when: ansible_network_os == 'junos'
+      register: output
+
+    - name: debug
+      debug:
+        var: output
 
     - name: Shutdown interface
-      nxos_config: 
+      nxos_config:
         lines:
           - shutdown
-        parents: 
+        parents:
           - interface Ethernet1/10
       when: ansible_network_os == 'nxos'

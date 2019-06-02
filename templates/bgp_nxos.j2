@@ -1,11 +1,13 @@
 router bgp {{data['protocols']['bgp']['local_as']}}
   router-id {{data['protocols']['bgp']['RID']}}
+  bestpath as-path multipath-relax
   address-family {{data['protocols']['bgp']['address_family']}}
+  maximum-paths 64
   {%- for network in data['protocols']['bgp']['advertise_subnets'] %}
   network {{network}}
   {%- endfor -%}
   {%- for peer in data['protocols']['bgp']['peers'].keys() %}
-  neighbor {{peer}} 
+  neighbor {{peer}}
     remote-as {{data['protocols']['bgp']['peers'][peer]}}
     address-family ipv4 unicast
     exit
