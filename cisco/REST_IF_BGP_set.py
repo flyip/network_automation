@@ -105,6 +105,8 @@ for key in data['device'].keys():
       #perform the task
       lock_result = conn.lock()
       conn.load_configuration(action='set', config=commands)
+      conn.validate()
+      conn.compare_configuration()
       conn.commit()
       conn.unlock()
       conn.close_session()

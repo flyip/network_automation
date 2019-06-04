@@ -23,15 +23,18 @@
     - name: Run command on NXOS NE.
       nxos_command:
         commands:
-          - show ip int br
-          - show ip bgp summary
-#        wait_for: result[0] contains Cisco
+          - show version
+#          - show ip int br
+#          - show ip bgp summary
+        wait_for: result[0] contains Junos
+        retries: 3
+        interval: 10
       when: ansible_network_os == 'nxos'
       register: output
 
     - name: debug
       debug:
-        var: output['stdout_lines'][1]
+        var: stdout
 
     - name: Run command on Junos NE.
       connection: network_cli
@@ -46,7 +49,6 @@
     - name: debug
       debug:
         var: output
-
     - name: Shutdown interface
       nxos_config:
         lines:
