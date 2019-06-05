@@ -1,0 +1,39 @@
+---
+- name: NXOS ansible testing.
+  hosts: nas
+  gather_facts: False
+  vars:
+    dict: { 'testuser1': 'wheel', 'testuser2': 'root'  }
+
+  tasks:
+    - name: Tracking progress through a loop with index_var
+      debug:
+        msg: "{{ item }} with index {{ my_idx }}"
+      loop:
+        - apple
+        - banana
+        - pear
+      loop_control:
+        index_var: my_idx
+
+    # main.yml
+    - include_tasks: inner.yml
+      loop:
+        - 1
+        - 2
+        - 3
+      loop_control:
+        loop_var: outer_item
+
+    - name: add several users
+      debug:
+        msg: "{{ item.key }}'s group is: {{ item.value }} "
+      loop: "{{ dict|dict2items }}"
+
+    - name: add several users
+      debug:
+        msg: " {{item}} "
+      loop: "{{[1, [2,3] ,4] | flatten(levels=1)}}"
+
+
+

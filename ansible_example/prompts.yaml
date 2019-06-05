@@ -1,0 +1,14 @@
+---
+- hosts: spine01
+  vars_prompt:
+    - name: username
+      prompt: "What is your username?"
+      private: no
+    - name: password
+      prompt: "What is your password?"
+  gather_facts: False
+  
+  tasks:
+    - name: Do something
+      debug:
+        msg: 'Logging in as {{ username }}'

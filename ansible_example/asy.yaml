@@ -1,0 +1,17 @@
+---
+- name: NXOS ansible testing.
+  hosts: spine01
+  gather_facts: False
+
+  tasks:
+  - name: show interface every 5s.
+    nxos_command:
+      commands:
+        - show interface eth1/1
+    async: 45
+    poll: 5
+    register: result
+
+  - name: show result.
+    debug:
+      var: result.stdout_lines

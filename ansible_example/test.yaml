@@ -1,0 +1,9 @@
+---
+- name: NXOS ansible testing.
+  hosts: spine01
+  gather_facts: False
+
+  tasks:
+  - name: Get clock.
+    debug:
+      msg: "{{groups.juniper}}"

@@ -1,0 +1,24 @@
+---
+- name: NXOS ansible testing.
+  hosts: spine01
+  gather_facts: Ture
+  vars:
+    test_list: ['192.24.2.1', 'host.fqdn', '::1', '192.168.32.0/24', 'fe80::100/10', True, '', '42540766412265424405338506004571095040/64']
+#    date: now(fmt="%G-%m-%d-%H")
+  tasks:
+    - name: Get vlans info.
+      nxos_command:
+        commands:
+          - show interface ethernet1/1
+      register: result
+
+    - name: Print the info to JSON.
+      debug:
+#        var: test_list
+#        msg: "{{result.stdout[0] | parse_cli('filter1')}}"
+#        msg: "{{test_list | ipaddr('host/prefix') }}"
+#        msg: "{{result.stdout[0] | regex_search('(\\d+\\.){3}\\d+') }}"
+#        var: lookup('pipe','date +%Y-%m-%d_%H-%M-%S')
+        var:
+          now(fmt="%G-%m-%d-%H")
+
