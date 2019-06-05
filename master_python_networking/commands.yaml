@@ -1,0 +1,10 @@
+---
+- show run | json
+- show version | json
+- show clock | json
+- show hostname | json
+- show ip route | json
+- show ip route vrf management | json
+- show ip int br | json
+- show ip int br vrf management | json
+- show int mgmt  0 | json
