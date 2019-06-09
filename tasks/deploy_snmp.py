@@ -15,6 +15,9 @@ devices = yaml.load(open('../devices.yaml', 'r'), Loader=yaml.SafeLoader)
 logs_dir = '../logs/'
 header={'content-type':'application/json-rpc'}
 
+command_nxos = ['snmp-server community public rw', 'ip access-list snmp_acl','permit ip 192.168.122.1/32 any', 'deny ip any any', 'snmp-server community public use-ipv4acl snmp_acl',]
+command_junos = ['set snmp community public authorization read-write', 'set snmp client-list list0 192.168.122.0/24', 'set snmp community public client-list-name list0', 'set snmp community public clients 192.168.122.0/24 restrict']
+
 def debug_REST():
   from http.client import HTTPConnection
   '''Switches on logging of the requests module.'''
@@ -32,6 +35,24 @@ def create_log_folder():
     os.mkdir(logs_dir)
   else:
     print('Logs directory is existing')
+
+def make_cfg_nxos(commands):
+  payload = []
+  i = 1
+  for command in commands:
+    template = {
+    "jsonrpc": "2.0",
+    "method": "cli",
+    "params": {
+      "cmd": command,
+      "version": 1
+    },
+    "id": i,
+    "rollback": "rollback-on-error"
+    }
+    payload.append(template)
+    i += 1
+  return payload
 
 def perform_nxos_cmd(hostname, ip, payload, username, password, header):
   url= 'https://' + ip +'/ins'
@@ -62,37 +83,8 @@ def perform_junos_cmd(hostname, ip, commands, username, password):
   conn.unlock()
   conn.close_session()
 
-def make_cfg_nxos(data):
-  bgp_cfg = jinja2.Environment(loader=jinja2.FileSystemLoader('../templates')).get_template('bgp_nxos.j2').render(data=data)
-  interface_cfg = jinja2.Environment(loader=jinja2.FileSystemLoader('../templates')).get_template('interface_nxos.j2').render(data=data)
-  commands = interface_cfg + bgp_cfg
-  list = [command.strip() for command in commands.split('\n') if command.strip() != '']
-  payload = []
-  i = 1
-  for abc in list:
-    template = {
-    "jsonrpc": "2.0",
-    "method": "cli",
-    "params": {
-      "cmd": abc,
-      "version": 1
-    },
-    "id": i,
-    "rollback": "rollback-on-error"
-    }
-    payload.append(template)
-    i += 1
-  return payload
-
-def make_cfg_junos(data):
-  bgp_cfg = jinja2.Environment(loader=jinja2.FileSystemLoader('../templates')).get_template('bgp_junos.j2').render(data=data)
-  interface_cfg = jinja2.Environment(loader=jinja2.FileSystemLoader('../templates')).get_template('interface_junos.j2').render(data=data)
-  merge = bgp_cfg + '\n' + interface_cfg
-  commands = [ command for command in merge.split('\n') if command.strip() != '']
-  return commands
-
 if __name__ == "__main__":
-  #Setting log.(info send to file, warinning send to ternimal)
+  #Setting log.(info send to file, warining send to ternimal)
   logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s', filename='../logs/myapp.log')
   logger = logging.getLogger()
   console = logging.StreamHandler()
@@ -115,9 +107,9 @@ if __name__ == "__main__":
     print('*' * 20 + 'Starting ' + hostname + ' task' + '*' * 20)
     logger.info('*' * 20 + 'Starting ' + hostname + ' task' + '*' * 20 )
     if platform == 'junos':
-      commands = make_cfg_junos(data)
+      commands = command_junos
       perform_junos_cmd(hostname, ip, commands, username, password)
     if platform == 'nxos':
-      payload = make_cfg_nxos(data)
+      payload = make_cfg_nxos(command_nxos)
       #debug_REST()
       perform_nxos_cmd(hostname, ip, payload, username, password, header)
