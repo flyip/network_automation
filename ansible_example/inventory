@@ -35,6 +35,7 @@ all:
                 server02:
             vars:
                 ansible_user: ubuntu
+                ansible_password: asdfqwer
         self:
             hosts:
                 nas

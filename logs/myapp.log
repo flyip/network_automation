@@ -1386,3 +1386,315 @@ set snmp community public clients 192.168.122.0/24 restrict</nc:configuration-se
 <rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:7c9512ec-a6da-4506-a114-4bfd83482315">
 <ok/>
 </rpc-reply>
+2019-06-10 08:06:55,684 INFO: ********************Starting spine01 task********************
+2019-06-10 08:06:55,745 INFO: [{'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'hostname spine01', 'version': 1}, 'id': 1, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'ip domain-name flyip.org', 'version': 1}, 'id': 2, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'feature lldp', 'version': 1}, 'id': 3, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'interface Eth1/1', 'version': 1}, 'id': 4, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'description To_Leaf01_Eth1/1', 'version': 1}, 'id': 5, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'no switchport', 'version': 1}, 'id': 6, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'ip address 10.0.0.0/31', 'version': 1}, 'id': 7, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'no shut', 'version': 1}, 'id': 8, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 9, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'interface Eth1/4', 'version': 1}, 'id': 10, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'description To_Leaf02_ge0/0/1', 'version': 1}, 'id': 11, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'no switchport', 'version': 1}, 'id': 12, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'ip address 10.0.0.2/31', 'version': 1}, 'id': 13, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'no shut', 'version': 1}, 'id': 14, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 15, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'interface lo0', 'version': 1}, 'id': 16, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'ip address 192.168.0.1/32', 'version': 1}, 'id': 17, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 18, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'router bgp 1', 'version': 1}, 'id': 19, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'router-id 192.168.0.1', 'version': 1}, 'id': 20, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'bestpath as-path multipath-relax', 'version': 1}, 'id': 21, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'address-family ipv4 unicast', 'version': 1}, 'id': 22, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'maximum-paths 64', 'version': 1}, 'id': 23, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'network 192.168.0.1/32', 'version': 1}, 'id': 24, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'neighbor 10.0.0.1', 'version': 1}, 'id': 25, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'remote-as 3', 'version': 1}, 'id': 26, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'address-family ipv4 unicast', 'version': 1}, 'id': 27, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 28, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 29, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'neighbor 10.0.0.3', 'version': 1}, 'id': 30, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'remote-as 4', 'version': 1}, 'id': 31, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'address-family ipv4 unicast', 'version': 1}, 'id': 32, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 33, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 34, 'rollback': 'rollback-on-error'}]
+2019-06-10 08:07:03,796 INFO: {"jsonrpc": "2.0", "result": null, "id": 1}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 2}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 3}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 4}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 5}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 6}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 7}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 8}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 9}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 10}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 11}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 12}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 13}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 14}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 15}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 16}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 17}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 18}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 19}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 20}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 21}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 22}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 23}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 24}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 25}
+2019-06-10 08:07:03,797 INFO: {"jsonrpc": "2.0", "result": null, "id": 26}
+2019-06-10 08:07:03,798 INFO: {"jsonrpc": "2.0", "result": null, "id": 27}
+2019-06-10 08:07:03,798 INFO: {"jsonrpc": "2.0", "result": null, "id": 28}
+2019-06-10 08:07:03,798 INFO: {"jsonrpc": "2.0", "result": null, "id": 29}
+2019-06-10 08:07:03,798 INFO: {"jsonrpc": "2.0", "result": null, "id": 30}
+2019-06-10 08:07:03,798 INFO: {"jsonrpc": "2.0", "result": null, "id": 31}
+2019-06-10 08:07:03,798 INFO: {"jsonrpc": "2.0", "result": null, "id": 32}
+2019-06-10 08:07:03,798 INFO: {"jsonrpc": "2.0", "result": null, "id": 33}
+2019-06-10 08:07:03,798 INFO: {"jsonrpc": "2.0", "result": null, "id": 34}
+2019-06-10 08:07:03,838 INFO: ********************Starting spine02 task********************
+2019-06-10 08:07:03,984 INFO: Connected (version 2.0, client OpenSSH_6.6.1)
+2019-06-10 08:07:04,137 INFO: Authentication (publickey) failed.
+2019-06-10 08:07:04,140 INFO: Authentication (publickey) failed.
+2019-06-10 08:07:04,159 INFO: Authentication (password) successful!
+2019-06-10 08:07:04,267 INFO: [host 192.168.122.37 session 0x7f599cbabbe0] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:hello xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0"><nc:capabilities><nc:capability>urn:ietf:params:netconf:base:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:base:1.1</nc:capability><nc:capability>urn:ietf:params:netconf:capability:writable-running:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:candidate:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:confirmed-commit:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:rollback-on-error:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:startup:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:url:1.0?scheme=http,ftp,file,https,sftp</nc:capability><nc:capability>urn:ietf:params:netconf:capability:validate:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:xpath:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:notification:1.0</nc:capability><nc:capability>urn:liberouter:params:netconf:capability:power-control:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:interleave:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:with-defaults:1.0</nc:capability></nc:capabilities></nc:hello>]]>]]>
+2019-06-10 08:07:04,284 INFO: [host 192.168.122.37 session 0x7f599cbabbe0] Received:
+<!-- No zombies were killed during the creation of this user interface -->
+<!-- user admin, class j-super-user -->
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+    <capability>urn:ietf:params:netconf:capability:candidate:1.0</capability>
+    <capability>urn:ietf:params:netconf:capability:confirmed-commit:1.0</capability>
+    <capability>urn:ietf:params:netconf:capability:validate:1.0</capability>
+    <capability>urn:ietf:params:netconf:capability:url:1.0?scheme=http,ftp,file</capability>
+    <capability>urn:ietf:params:xml:ns:netconf:base:1.0</capability>
+    <capability>urn:ietf:params:xml:ns:netconf:capability:candidate:1.0</capability>
+    <capability>urn:ietf:params:xml:ns:netconf:capability:confirmed-commit:1.0</capability>
+    <capability>urn:ietf:params:xml:ns:netconf:capability:validate:1.0</capability>
+    <capability>urn:ietf:params:xml:ns:netconf:capability:url:1.0?protocol=http,ftp,file</capability>
+    <capability>http://xml.juniper.net/netconf/junos/1.0</capability>
+    <capability>http://xml.juniper.net/dmi/system/1.0</capability>
+  </capabilities>
+  <session-id>5019</session-id>
+</hello>
+2019-06-10 08:07:04,286 INFO: [host 192.168.122.37 session-id 5019] initialized: session-id=5019 | server_capabilities=<dict_keyiterator object at 0x7f599cb31db8>
+2019-06-10 08:07:04,286 INFO: [host 192.168.122.37 session-id 5019] Requesting 'Lock'
+2019-06-10 08:07:04,386 INFO: [host 192.168.122.37 session-id 5019] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:145c1aba-9093-4d3d-a41c-548695cf69db"><nc:lock><nc:target><nc:candidate/></nc:target></nc:lock></nc:rpc>]]>]]>
+2019-06-10 08:07:04,394 INFO: [host 192.168.122.37 session-id 5019] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:145c1aba-9093-4d3d-a41c-548695cf69db">
+<ok/>
+</rpc-reply>
+2019-06-10 08:07:04,395 INFO: [host 192.168.122.37 session-id 5019] Requesting 'LoadConfiguration'
+2019-06-10 08:07:04,495 INFO: [host 192.168.122.37 session-id 5019] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:23ac58e7-a8e3-4c2c-af8e-3c4362288ba1"><nc:load-configuration action="set" format="text"><nc:configuration-set>set routing-options router-id 192.168.0.2
+set policy-options policy-statement send from protocol direct
+set policy-options policy-statement send from route-filter 192.168.0.2/32 exact
+set policy-options policy-statement send then accept
+set protocols bgp export send
+set protocols bgp local-as 2
+set protocols bgp group leaf type external
+set protocols bgp group leaf family inet unicast
+set protocols bgp group leaf multipath multiple-as
+set protocols bgp group leaf neighbor 10.0.0.5 peer-as 3
+set protocols bgp group leaf neighbor 10.0.0.7 peer-as 4
+set policy-options policy-statement loadbal from route-filter 192.168.0.2/32 orlonger
+set policy-options policy-statement loadbal then load-balance per-packet
+set routing-options forwarding-table export loadbal
+set system host-name spine02
+set system domain-name flyip.org
+set interfaces ge-0/0/0 unit 0 family inet address 10.0.0.4/31
+set interfaces ge-0/0/0 description To_Leaf01_Eth1/2
+set interfaces ge-0/0/1 unit 0 family inet address 10.0.0.6/31
+set interfaces ge-0/0/1 description To_Leaf02_ge0/0/1
+set interfaces lo0 unit 0 family inet address 192.168.0.2/32
+set interfaces lo0 description Loopback
+set protocols lldp interface all
+set protocols lldp port-id-subtype interface-name</nc:configuration-set></nc:load-configuration></nc:rpc>]]>]]>
+2019-06-10 08:07:04,554 INFO: [host 192.168.122.37 session-id 5019] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:23ac58e7-a8e3-4c2c-af8e-3c4362288ba1">
+<load-configuration-results>
+<ok/>
+</load-configuration-results>
+</rpc-reply>
+2019-06-10 08:07:04,555 INFO: [host 192.168.122.37 session-id 5019] Requesting 'Validate'
+2019-06-10 08:07:04,655 INFO: [host 192.168.122.37 session-id 5019] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:6e17c347-9aad-4c5d-85c0-3a1e64a94bf0"><nc:validate><nc:source><nc:candidate/></nc:source></nc:validate></nc:rpc>]]>]]>
+2019-06-10 08:07:05,034 INFO: [host 192.168.122.37 session-id 5019] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:6e17c347-9aad-4c5d-85c0-3a1e64a94bf0">
+<commit-results>
+</commit-results>
+<ok/>
+</rpc-reply>
+2019-06-10 08:07:05,035 INFO: [host 192.168.122.37 session-id 5019] Requesting 'CompareConfiguration'
+2019-06-10 08:07:05,135 INFO: [host 192.168.122.37 session-id 5019] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:4f5de3d2-3fda-4c6c-85e4-56372ac195bf"><nc:get-configuration compare="rollback" format="text" rollback="0"/></nc:rpc>]]>]]>
+2019-06-10 08:07:05,161 INFO: [host 192.168.122.37 session-id 5019] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:4f5de3d2-3fda-4c6c-85e4-56372ac195bf">
+<configuration-information>
+<configuration-output>
+</configuration-output>
+</configuration-information>
+</rpc-reply>
+2019-06-10 08:07:05,162 INFO: [host 192.168.122.37 session-id 5019] Requesting 'Commit'
+2019-06-10 08:07:05,261 INFO: [host 192.168.122.37 session-id 5019] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:478455f1-2df7-4c9d-bcb6-2a501ce80048"><commit-configuration/></nc:rpc>]]>]]>
+2019-06-10 08:07:05,731 INFO: [host 192.168.122.37 session-id 5019] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:478455f1-2df7-4c9d-bcb6-2a501ce80048">
+<ok/>
+</rpc-reply>
+2019-06-10 08:07:05,732 INFO: [host 192.168.122.37 session-id 5019] Requesting 'Unlock'
+2019-06-10 08:07:05,831 INFO: [host 192.168.122.37 session-id 5019] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:8b6ac602-8ad9-4bf8-a9e4-412663b88810"><nc:unlock><nc:target><nc:candidate/></nc:target></nc:unlock></nc:rpc>]]>]]>
+2019-06-10 08:07:05,836 INFO: [host 192.168.122.37 session-id 5019] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:8b6ac602-8ad9-4bf8-a9e4-412663b88810">
+<ok/>
+</rpc-reply>
+2019-06-10 08:07:05,836 INFO: [host 192.168.122.37 session-id 5019] Requesting 'CloseSession'
+2019-06-10 08:07:05,936 INFO: [host 192.168.122.37 session-id 5019] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:6bd437ba-7005-4da0-a700-eb8882ecc936"><nc:close-session/></nc:rpc>]]>]]>
+2019-06-10 08:07:05,938 INFO: [host 192.168.122.37 session-id 5019] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:6bd437ba-7005-4da0-a700-eb8882ecc936">
+<ok/>
+</rpc-reply>
+2019-06-10 08:07:05,944 INFO: ********************Starting leaf01 task********************
+2019-06-10 08:07:05,953 INFO: [{'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'hostname leaf01', 'version': 1}, 'id': 1, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'ip domain-name flyip.org', 'version': 1}, 'id': 2, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'feature lldp', 'version': 1}, 'id': 3, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'interface Eth1/1', 'version': 1}, 'id': 4, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'description To_Spine01_Eth1/1', 'version': 1}, 'id': 5, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'no switchport', 'version': 1}, 'id': 6, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'ip address 10.0.0.1/31', 'version': 1}, 'id': 7, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'no shut', 'version': 1}, 'id': 8, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 9, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'interface Eth1/2', 'version': 1}, 'id': 10, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'description To_Spine02_ge0/0/0', 'version': 1}, 'id': 11, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'no switchport', 'version': 1}, 'id': 12, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'ip address 10.0.0.5/31', 'version': 1}, 'id': 13, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'no shut', 'version': 1}, 'id': 14, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 15, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'interface Eth1/3', 'version': 1}, 'id': 16, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'description To_Server', 'version': 1}, 'id': 17, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'no switchport', 'version': 1}, 'id': 18, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'ip address 172.16.0.1/24', 'version': 1}, 'id': 19, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'no shut', 'version': 1}, 'id': 20, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 21, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'interface lo0', 'version': 1}, 'id': 22, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'ip address 192.168.0.3/32', 'version': 1}, 'id': 23, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 24, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'router bgp 3', 'version': 1}, 'id': 25, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'router-id 192.168.0.3', 'version': 1}, 'id': 26, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'bestpath as-path multipath-relax', 'version': 1}, 'id': 27, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'address-family ipv4 unicast', 'version': 1}, 'id': 28, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'maximum-paths 64', 'version': 1}, 'id': 29, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'network 192.168.0.3/32', 'version': 1}, 'id': 30, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'network 172.16.0.0/24', 'version': 1}, 'id': 31, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'neighbor 10.0.0.0', 'version': 1}, 'id': 32, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'remote-as 1', 'version': 1}, 'id': 33, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'address-family ipv4 unicast', 'version': 1}, 'id': 34, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 35, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 36, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'neighbor 10.0.0.4', 'version': 1}, 'id': 37, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'remote-as 2', 'version': 1}, 'id': 38, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'address-family ipv4 unicast', 'version': 1}, 'id': 39, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 40, 'rollback': 'rollback-on-error'}, {'jsonrpc': '2.0', 'method': 'cli', 'params': {'cmd': 'exit', 'version': 1}, 'id': 41, 'rollback': 'rollback-on-error'}]
+2019-06-10 08:07:17,552 INFO: {"jsonrpc": "2.0", "result": null, "id": 1}
+2019-06-10 08:07:17,552 INFO: {"jsonrpc": "2.0", "result": null, "id": 2}
+2019-06-10 08:07:17,552 INFO: {"jsonrpc": "2.0", "result": null, "id": 3}
+2019-06-10 08:07:17,552 INFO: {"jsonrpc": "2.0", "result": null, "id": 4}
+2019-06-10 08:07:17,552 INFO: {"jsonrpc": "2.0", "result": null, "id": 5}
+2019-06-10 08:07:17,552 INFO: {"jsonrpc": "2.0", "result": null, "id": 6}
+2019-06-10 08:07:17,552 INFO: {"jsonrpc": "2.0", "result": null, "id": 7}
+2019-06-10 08:07:17,552 INFO: {"jsonrpc": "2.0", "result": null, "id": 8}
+2019-06-10 08:07:17,552 INFO: {"jsonrpc": "2.0", "result": null, "id": 9}
+2019-06-10 08:07:17,552 INFO: {"jsonrpc": "2.0", "result": null, "id": 10}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 11}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 12}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 13}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 14}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 15}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 16}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 17}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 18}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 19}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 20}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 21}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 22}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 23}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 24}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 25}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 26}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 27}
+2019-06-10 08:07:17,553 INFO: {"jsonrpc": "2.0", "result": null, "id": 28}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 29}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 30}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 31}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 32}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 33}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 34}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 35}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 36}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 37}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 38}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 39}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 40}
+2019-06-10 08:07:17,554 INFO: {"jsonrpc": "2.0", "result": null, "id": 41}
+2019-06-10 08:07:17,603 INFO: ********************Starting leaf02 task********************
+2019-06-10 08:07:17,740 INFO: Connected (version 2.0, client OpenSSH_6.6.1)
+2019-06-10 08:07:17,884 INFO: Authentication (publickey) failed.
+2019-06-10 08:07:17,887 INFO: Authentication (publickey) failed.
+2019-06-10 08:07:17,904 INFO: Authentication (password) successful!
+2019-06-10 08:07:18,010 INFO: [host 192.168.122.65 session 0x7f599c0d7a20] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:hello xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0"><nc:capabilities><nc:capability>urn:ietf:params:netconf:base:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:base:1.1</nc:capability><nc:capability>urn:ietf:params:netconf:capability:writable-running:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:candidate:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:confirmed-commit:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:rollback-on-error:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:startup:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:url:1.0?scheme=http,ftp,file,https,sftp</nc:capability><nc:capability>urn:ietf:params:netconf:capability:validate:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:xpath:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:notification:1.0</nc:capability><nc:capability>urn:liberouter:params:netconf:capability:power-control:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:interleave:1.0</nc:capability><nc:capability>urn:ietf:params:netconf:capability:with-defaults:1.0</nc:capability></nc:capabilities></nc:hello>]]>]]>
+2019-06-10 08:07:18,017 INFO: [host 192.168.122.65 session 0x7f599c0d7a20] Received:
+<!-- No zombies were killed during the creation of this user interface -->
+<!-- user admin, class j-super-user -->
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+    <capability>urn:ietf:params:netconf:capability:candidate:1.0</capability>
+    <capability>urn:ietf:params:netconf:capability:confirmed-commit:1.0</capability>
+    <capability>urn:ietf:params:netconf:capability:validate:1.0</capability>
+    <capability>urn:ietf:params:netconf:capability:url:1.0?scheme=http,ftp,file</capability>
+    <capability>urn:ietf:params:xml:ns:netconf:base:1.0</capability>
+    <capability>urn:ietf:params:xml:ns:netconf:capability:candidate:1.0</capability>
+    <capability>urn:ietf:params:xml:ns:netconf:capability:confirmed-commit:1.0</capability>
+    <capability>urn:ietf:params:xml:ns:netconf:capability:validate:1.0</capability>
+    <capability>urn:ietf:params:xml:ns:netconf:capability:url:1.0?protocol=http,ftp,file</capability>
+    <capability>http://xml.juniper.net/netconf/junos/1.0</capability>
+    <capability>http://xml.juniper.net/dmi/system/1.0</capability>
+  </capabilities>
+  <session-id>4997</session-id>
+</hello>
+2019-06-10 08:07:18,017 INFO: [host 192.168.122.65 session-id 4997] initialized: session-id=4997 | server_capabilities=<dict_keyiterator object at 0x7f599cb66778>
+2019-06-10 08:07:18,017 INFO: [host 192.168.122.65 session-id 4997] Requesting 'Lock'
+2019-06-10 08:07:18,117 INFO: [host 192.168.122.65 session-id 4997] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:851ccad6-2c5e-4a7d-b48c-4e691667e880"><nc:lock><nc:target><nc:candidate/></nc:target></nc:lock></nc:rpc>]]>]]>
+2019-06-10 08:07:18,125 INFO: [host 192.168.122.65 session-id 4997] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:851ccad6-2c5e-4a7d-b48c-4e691667e880">
+<ok/>
+</rpc-reply>
+2019-06-10 08:07:18,126 INFO: [host 192.168.122.65 session-id 4997] Requesting 'LoadConfiguration'
+2019-06-10 08:07:18,226 INFO: [host 192.168.122.65 session-id 4997] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:05236875-9abf-46e0-9924-bb16188160fd"><nc:load-configuration action="set" format="text"><nc:configuration-set>set routing-options router-id 192.168.0.4
+set policy-options policy-statement send from protocol direct
+set policy-options policy-statement send from route-filter 192.168.0.4/32 exact
+set policy-options policy-statement send from route-filter 172.16.1.0/24 exact
+set policy-options policy-statement send then accept
+set protocols bgp export send
+set protocols bgp local-as 4
+set protocols bgp group spine type external
+set protocols bgp group spine family inet unicast
+set protocols bgp group spine multipath multiple-as
+set protocols bgp group spine neighbor 10.0.0.2 peer-as 1
+set protocols bgp group spine neighbor 10.0.0.6 peer-as 2
+set policy-options policy-statement loadbal from route-filter 192.168.0.4/32 orlonger
+set policy-options policy-statement loadbal from route-filter 172.16.1.0/24 orlonger
+set policy-options policy-statement loadbal then load-balance per-packet
+set routing-options forwarding-table export loadbal
+set system host-name leaf02
+set system domain-name flyip.org
+set interfaces ge-0/0/0 unit 0 family inet address 10.0.0.3/31
+set interfaces ge-0/0/0 description To_Spine01_Eth1/4
+set interfaces ge-0/0/1 unit 0 family inet address 10.0.0.7/31
+set interfaces ge-0/0/1 description To_Spine02_ge0/0/1
+set interfaces ge-0/0/2 unit 0 family inet address 172.16.1.1/24
+set interfaces ge-0/0/2 description To_Spine02_ge0/0/1
+set interfaces lo0 unit 0 family inet address 192.168.0.4/32
+set interfaces lo0 description Loopback
+set protocols lldp interface all
+set protocols lldp port-id-subtype interface-name</nc:configuration-set></nc:load-configuration></nc:rpc>]]>]]>
+2019-06-10 08:07:18,238 INFO: [host 192.168.122.65 session-id 4997] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:05236875-9abf-46e0-9924-bb16188160fd">
+<load-configuration-results>
+<ok/>
+</load-configuration-results>
+</rpc-reply>
+2019-06-10 08:07:18,239 INFO: [host 192.168.122.65 session-id 4997] Requesting 'Validate'
+2019-06-10 08:07:18,338 INFO: [host 192.168.122.65 session-id 4997] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:05ced69f-d921-49b6-ae8a-5c202c3aecd0"><nc:validate><nc:source><nc:candidate/></nc:source></nc:validate></nc:rpc>]]>]]>
+2019-06-10 08:07:19,055 INFO: [host 192.168.122.65 session-id 4997] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:05ced69f-d921-49b6-ae8a-5c202c3aecd0">
+<commit-results>
+</commit-results>
+<ok/>
+</rpc-reply>
+2019-06-10 08:07:19,055 INFO: [host 192.168.122.65 session-id 4997] Requesting 'CompareConfiguration'
+2019-06-10 08:07:19,155 INFO: [host 192.168.122.65 session-id 4997] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:a0d02a7c-4c1b-490d-91ad-612439365577"><nc:get-configuration compare="rollback" format="text" rollback="0"/></nc:rpc>]]>]]>
+2019-06-10 08:07:19,191 INFO: [host 192.168.122.65 session-id 4997] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:a0d02a7c-4c1b-490d-91ad-612439365577">
+<configuration-information>
+<configuration-output>
+[edit interfaces]
++   ge-0/0/2 {
++       description To_Spine02_ge0/0/1;
++       unit 0 {
++           family inet {
++               address 172.16.1.1/24;
++           }
++       }
++   }
+[edit policy-options policy-statement loadbal from]
+      route-filter 192.168.0.4/32 orlonger { ... }
++     route-filter 172.16.1.0/24 orlonger;
+[edit policy-options policy-statement send from]
+      route-filter 192.168.0.4/32 exact { ... }
++     route-filter 172.16.1.0/24 exact;
+</configuration-output>
+</configuration-information>
+</rpc-reply>
+2019-06-10 08:07:19,192 INFO: [host 192.168.122.65 session-id 4997] Requesting 'Commit'
+2019-06-10 08:07:19,292 INFO: [host 192.168.122.65 session-id 4997] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:fbe6ebbe-887b-45b4-b32b-ea0b5142b6b1"><commit-configuration/></nc:rpc>]]>]]>
+2019-06-10 08:07:20,135 INFO: [host 192.168.122.65 session-id 4997] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:fbe6ebbe-887b-45b4-b32b-ea0b5142b6b1">
+<ok/>
+</rpc-reply>
+2019-06-10 08:07:20,136 INFO: [host 192.168.122.65 session-id 4997] Requesting 'Unlock'
+2019-06-10 08:07:20,236 INFO: [host 192.168.122.65 session-id 4997] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:3a592663-e90a-447b-ac43-9dc375f4d775"><nc:unlock><nc:target><nc:candidate/></nc:target></nc:unlock></nc:rpc>]]>]]>
+2019-06-10 08:07:20,240 INFO: [host 192.168.122.65 session-id 4997] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:3a592663-e90a-447b-ac43-9dc375f4d775">
+<ok/>
+</rpc-reply>
+2019-06-10 08:07:20,241 INFO: [host 192.168.122.65 session-id 4997] Requesting 'CloseSession'
+2019-06-10 08:07:20,341 INFO: [host 192.168.122.65 session-id 4997] Sending:
+<?xml version="1.0" encoding="UTF-8"?><nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:9457fd78-f4ae-424d-a1d3-5021af235d26"><nc:close-session/></nc:rpc>]]>]]>
+2019-06-10 08:07:20,343 INFO: [host 192.168.122.65 session-id 4997] Received:
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/17.1R1/junos" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:9457fd78-f4ae-424d-a1d3-5021af235d26">
+<ok/>
+</rpc-reply>

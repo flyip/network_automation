@@ -12,6 +12,11 @@
       Layer: L3
       State: no shut
       Description: To_Spine02_ge0/0/1
+    ge-0/0/2:
+      IP: 172.16.1.1/24
+      Layer: L3
+      State: no shut
+      Description: To_Spine02_ge0/0/1
     lo0:
       IP: 192.168.0.4/32
       Description: Loopback
@@ -22,6 +27,7 @@
       address_family: ipv4 unicast
       advertise_subnets:
         - 192.168.0.4/32
+        - 172.16.1.0/24
       groups:
         spine:
           type: external
