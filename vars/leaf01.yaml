@@ -3,7 +3,7 @@
   domain_name: flyip.org
   interfaces:
     Eth1/1:
-      IP: 10.0.0.1/31
+      IP: 10.0.0.3/31
       Layer: L3
       State: no shut
       Description: To_Spine01_Eth1/1
@@ -29,5 +29,5 @@
         - 192.168.0.3/32
         - 172.16.0.0/24
       peers:
-        10.0.0.0: 1
+        10.0.0.2: 1
         10.0.0.4: 2

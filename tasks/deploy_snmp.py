@@ -15,8 +15,8 @@ devices = yaml.load(open('../devices.yaml', 'r'), Loader=yaml.SafeLoader)
 logs_dir = '../logs/'
 header={'content-type':'application/json-rpc'}
 
-command_nxos = ['snmp-server community public rw', 'ip access-list snmp_acl','permit ip 192.168.122.1/32 any', 'deny ip any any', 'snmp-server community public use-ipv4acl snmp_acl',]
-command_junos = ['set snmp community public authorization read-write', 'set snmp client-list list0 192.168.122.0/24', 'set snmp community public client-list-name list0', 'set snmp community public clients 192.168.122.0/24 restrict']
+command_nxos = ['snmp-server community public rw', 'ip access-list snmp_acl','permit ip 172.16.0.0/16 any', 'deny ip any any', 'snmp-server community public use-ipv4acl snmp_acl',]
+command_junos = ['set snmp community public authorization read-write', 'set snmp client-list list0 172.16.0.0/16', 'set snmp community public client-list-name list0']
 
 def debug_REST():
   from http.client import HTTPConnection

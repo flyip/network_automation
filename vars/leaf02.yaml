@@ -3,15 +3,15 @@
   domain_name: flyip.org
   interfaces:
     ge-0/0/0:
-      IP: 10.0.0.3/31
-      Layer: L3
-      State: no shut
-      Description: To_Spine01_Eth1/4
-    ge-0/0/1:
       IP: 10.0.0.7/31
       Layer: L3
       State: no shut
       Description: To_Spine02_ge0/0/1
+    ge-0/0/1:
+      IP: 10.0.0.1/31
+      Layer: L3
+      State: no shut
+      Description: To_Spine01_Eth1/1
     ge-0/0/2:
       IP: 172.16.1.1/24
       Layer: L3
@@ -31,7 +31,7 @@
       groups:
         spine:
           type: external
-          10.0.0.2: 1
+          10.0.0.0: 1
           10.0.0.6: 2
       policy:
         export: send

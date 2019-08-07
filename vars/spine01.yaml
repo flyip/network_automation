@@ -6,12 +6,12 @@
       IP: 10.0.0.0/31
       Layer: L3
       State: no shut
-      Description: To_Leaf01_Eth1/1
-    Eth1/4:
+      Description: To_Leaf02_ge0/0/1
+    Eth1/2:
       IP: 10.0.0.2/31
       Layer: L3
       State: no shut
-      Description: To_Leaf02_ge0/0/1
+      Description: To_Leaf01_Eth1/1
     lo0:
       IP: 192.168.0.1/32
       Description: Loopback
@@ -23,6 +23,6 @@
       advertise_subnets:
         - 192.168.0.1/32
       peers:
-        10.0.0.1: 3
-        10.0.0.3: 4
+        10.0.0.1: 4
+        10.0.0.3: 3
 

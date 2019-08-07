@@ -2,17 +2,17 @@
 device:
   spine01:
     hostname: spine01
-    ip: 192.168.122.34
+    ip: 192.168.122.105
     platform: nxos
   spine02:
     hostname: spine02
-    ip: 192.168.122.37
+    ip: 192.168.122.147
     platform: junos
   leaf01:
     hostname: leaf01
-    ip: 192.168.122.64
+    ip: 192.168.122.118
     platform: nxos
   leaf02:
     hostname: leaf02
     platform: junos
-    ip: 192.168.122.65
+    ip: 192.168.122.40
